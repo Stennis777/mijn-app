@@ -1,0 +1,207 @@
+[
+  {
+    "title": "Webwinkel Vakdagen",
+    "slug": "webwinkel-vakdagen-2025",
+    "date": "2025-01-29",
+    "endDate": "2025-01-30",
+    "location": "Jaarbeurs Utrecht",
+    "city": "Utrecht",
+    "description": "Webwinkel Vakdagen is the largest e-commerce event in the Netherlands. Thousands of online retailers, marketers, and tech professionals gather to discover the latest trends, tools, and strategies in e-commerce.",
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+    "ticketUrl": "https://www.webwinkelvakdagen.nl",
+    "category": "Conference",
+    "speakers": [
+      {
+        "name": "Sophie de Vries",
+        "title": "CEO, NL Commerce Group",
+        "bio": "Sophie has over 15 years of experience in Dutch e-commerce and has helped scale multiple online retail brands to 8-figure revenues.",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
+      },
+      {
+        "name": "Mark Janssen",
+        "title": "Head of Growth, Bol.com",
+        "bio": "Mark leads growth strategy at one of the Netherlands' largest e-commerce platforms, specializing in marketplace dynamics and seller ecosystems.",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+      },
+      {
+        "name": "Lisa van den Berg",
+        "title": "Founder, Checkout Experts",
+        "bio": "Lisa is a conversion rate optimization specialist who has worked with over 200 Dutch webshops to improve checkout flows and reduce cart abandonment.",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "09:00",
+        "title": "Doors open & registration"
+      },
+      {
+        "time": "10:00",
+        "title": "Opening keynote: The future of Dutch e-commerce"
+      },
+      {
+        "time": "11:00",
+        "title": "Panel: Marketplace strategies for 2025"
+      },
+      {
+        "time": "12:30",
+        "title": "Lunch break"
+      },
+      {
+        "time": "13:30",
+        "title": "Workshop: AI-driven personalization in webshops"
+      },
+      {
+        "time": "15:00",
+        "title": "Keynote: Sustainable e-commerce — trend or must?"
+      },
+      {
+        "time": "16:30",
+        "title": "Networking drinks"
+      }
+    ],
+    "venue": {
+      "name": "Jaarbeurs Utrecht",
+      "address": "Jaarbeursplein 6, 3521 AL Utrecht",
+      "transport": "5 minutes walk from Utrecht Centraal train station. Parking available at Jaarbeurs P1 and P2."
+    }
+  },
+  {
+    "title": "Emerce Eday",
+    "slug": "emerce-eday-2025",
+    "date": "2025-03-20",
+    "endDate": "2025-03-20",
+    "location": "Ziggo Dome Amsterdam",
+    "city": "Amsterdam",
+    "description": "Emerce Eday is the leading digital marketing and e-commerce conference in the Netherlands. Industry leaders share insights on digital transformation, customer experience, and the future of online retail.",
+    "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
+    "ticketUrl": "https://www.emerce.nl/eday",
+    "category": "Conference",
+    "speakers": [
+      {
+        "name": "Thomas Bakker",
+        "title": "Chief Digital Officer, Coolblue",
+        "bio": "Thomas oversees Coolblue's digital strategy across the Netherlands and Belgium, driving innovation in customer experience and logistics.",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
+      },
+      {
+        "name": "Emma Smit",
+        "title": "Director of E-commerce, Rituals",
+        "bio": "Emma leads e-commerce at Rituals, scaling their direct-to-consumer channel across 33 countries while maintaining brand consistency.",
+        "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80"
+      },
+      {
+        "name": "Pieter van Rijn",
+        "title": "Partner, Deloitte Digital",
+        "bio": "Pieter advises top-100 Dutch retailers on digital transformation, with a focus on omnichannel strategies and tech stack optimization.",
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "08:30",
+        "title": "Registration & welcome coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Opening: Digital trends reshaping retail"
+      },
+      {
+        "time": "10:30",
+        "title": "Keynote: Building a customer-first e-commerce brand"
+      },
+      {
+        "time": "12:00",
+        "title": "Lunch"
+      },
+      {
+        "time": "13:00",
+        "title": "Breakout sessions: SEO, Paid Media, Retention"
+      },
+      {
+        "time": "15:30",
+        "title": "Panel: The role of AI in the future of retail"
+      },
+      {
+        "time": "17:00",
+        "title": "Closing keynote & awards"
+      },
+      {
+        "time": "18:00",
+        "title": "Networking reception"
+      }
+    ],
+    "venue": {
+      "name": "Ziggo Dome",
+      "address": "De Passage 100, 1101 AX Amsterdam",
+      "transport": "Take metro line 53 to Strandvliet or bus 65. Parking available in the Ziggo Dome parking garage."
+    }
+  },
+  {
+    "title": "Shopping Today",
+    "slug": "shopping-today-2025",
+    "date": "2025-06-05",
+    "endDate": "2025-06-06",
+    "location": "Expo Haarlemmermeer",
+    "city": "Hoofddorp",
+    "description": "Shopping Today is the annual congress and exhibition for e-commerce and omnichannel retail in the Netherlands. Organized by Thuiswinkel.org, it brings together retailers, suppliers, and innovators to explore the future of shopping.",
+    "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80",
+    "ticketUrl": "https://www.shoppingtoday.nl",
+    "category": "Congress & Exhibition",
+    "speakers": [
+      {
+        "name": "Anna Visser",
+        "title": "Director, Thuiswinkel.org",
+        "bio": "Anna leads Thuiswinkel.org, the Dutch e-commerce industry association, advocating for fair and safe online shopping standards.",
+        "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&q=80"
+      },
+      {
+        "name": "Joost de Groot",
+        "title": "VP Commerce, PostNL",
+        "bio": "Joost drives e-commerce logistics innovation at PostNL, working closely with thousands of Dutch webshops on last-mile delivery solutions.",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
+      },
+      {
+        "name": "Chantal Wouters",
+        "title": "Head of Retail Innovation, ING",
+        "bio": "Chantal focuses on fintech solutions for retail and e-commerce, including embedded finance, BNPL, and payment optimization.",
+        "image": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&q=80"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "09:00",
+        "title": "Exhibition opens & networking breakfast"
+      },
+      {
+        "time": "10:00",
+        "title": "Opening congress: State of Dutch e-commerce 2025"
+      },
+      {
+        "time": "11:00",
+        "title": "Keynote: Omnichannel — connecting online and offline"
+      },
+      {
+        "time": "12:30",
+        "title": "Lunch & exhibition"
+      },
+      {
+        "time": "13:30",
+        "title": "Workshops: Logistics, Payments, Customer loyalty"
+      },
+      {
+        "time": "15:00",
+        "title": "Panel: Sustainability in e-commerce supply chains"
+      },
+      {
+        "time": "16:30",
+        "title": "Day 1 closing & drinks"
+      }
+    ],
+    "venue": {
+      "name": "Expo Haarlemmermeer",
+      "address": "Vijfhuizerweg 2, 2141 BM Vijfhuizen",
+      "transport": "Bus 300 from Amsterdam Centraal or Schiphol. Free parking on-site."
+    }
+  }
+]
