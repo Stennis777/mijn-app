@@ -1,114 +1,114 @@
 [
   {
     "title": "Webwinkel Vakdagen",
-    "slug": "webwinkel-vakdagen-2025",
-    "date": "2025-01-29",
-    "endDate": "2025-01-30",
+    "slug": "webwinkel-vakdagen-2026",
+    "date": "2026-01-28",
+    "endDate": "2026-01-29",
     "location": "Jaarbeurs Utrecht",
     "city": "Utrecht",
-    "description": "Webwinkel Vakdagen is the largest e-commerce event in the Netherlands. Thousands of online retailers, marketers, and tech professionals gather to discover the latest trends, tools, and strategies in e-commerce.",
+    "description": "Webwinkel Vakdagen is het grootste e-commerce evenement van Nederland. Duizenden online retailers, marketeers en techprofessionals komen samen om de nieuwste trends, tools en strategieën in e-commerce te ontdekken.",
     "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
     "ticketUrl": "https://www.webwinkelvakdagen.nl",
-    "category": "Conference",
+    "category": "Conferentie",
     "speakers": [
       {
         "name": "Sophie de Vries",
         "title": "CEO, NL Commerce Group",
-        "bio": "Sophie has over 15 years of experience in Dutch e-commerce and has helped scale multiple online retail brands to 8-figure revenues.",
+        "bio": "Sophie heeft meer dan 15 jaar ervaring in Nederlandse e-commerce en heeft meerdere online retailmerken geholpen te groeien naar achtcijferige omzetten.",
         "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
       },
       {
         "name": "Mark Janssen",
         "title": "Head of Growth, Bol.com",
-        "bio": "Mark leads growth strategy at one of the Netherlands' largest e-commerce platforms, specializing in marketplace dynamics and seller ecosystems.",
+        "bio": "Mark leidt de groeistrategie bij een van de grootste e-commerceplatforms van Nederland, gespecialiseerd in marketplace-dynamiek en verkopersecosystemen.",
         "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
       },
       {
         "name": "Lisa van den Berg",
-        "title": "Founder, Checkout Experts",
-        "bio": "Lisa is a conversion rate optimization specialist who has worked with over 200 Dutch webshops to improve checkout flows and reduce cart abandonment.",
+        "title": "Oprichter, Checkout Experts",
+        "bio": "Lisa is conversie-optimalisatiespecialist en heeft met meer dan 200 Nederlandse webshops gewerkt om betaalprocessen te verbeteren en winkelwagenverlating te verminderen.",
         "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80"
       }
     ],
     "schedule": [
       {
         "time": "09:00",
-        "title": "Doors open & registration"
+        "title": "Deuren open & registratie"
       },
       {
         "time": "10:00",
-        "title": "Opening keynote: The future of Dutch e-commerce"
+        "title": "Openingskeynote: De toekomst van Nederlandse e-commerce"
       },
       {
         "time": "11:00",
-        "title": "Panel: Marketplace strategies for 2025"
+        "title": "Panel: Marketplace-strategieën voor 2026"
       },
       {
         "time": "12:30",
-        "title": "Lunch break"
+        "title": "Lunchpauze"
       },
       {
         "time": "13:30",
-        "title": "Workshop: AI-driven personalization in webshops"
+        "title": "Workshop: AI-gedreven personalisatie in webshops"
       },
       {
         "time": "15:00",
-        "title": "Keynote: Sustainable e-commerce — trend or must?"
+        "title": "Keynote: Duurzame e-commerce — trend of noodzaak?"
       },
       {
         "time": "16:30",
-        "title": "Networking drinks"
+        "title": "Netwerkborrel"
       }
     ],
     "venue": {
       "name": "Jaarbeurs Utrecht",
       "address": "Jaarbeursplein 6, 3521 AL Utrecht",
-      "transport": "5 minutes walk from Utrecht Centraal train station. Parking available at Jaarbeurs P1 and P2."
+      "transport": "5 minuten lopen vanaf station Utrecht Centraal. Parkeren mogelijk op Jaarbeurs P1 en P2."
     }
   },
   {
     "title": "Emerce Eday",
-    "slug": "emerce-eday-2025",
-    "date": "2025-03-20",
-    "endDate": "2025-03-20",
+    "slug": "emerce-eday-2026",
+    "date": "2026-03-19",
+    "endDate": "2026-03-19",
     "location": "Ziggo Dome Amsterdam",
     "city": "Amsterdam",
-    "description": "Emerce Eday is the leading digital marketing and e-commerce conference in the Netherlands. Industry leaders share insights on digital transformation, customer experience, and the future of online retail.",
+    "description": "Emerce Eday is de toonaangevende conferentie voor digitale marketing en e-commerce in Nederland. BrancheLeiders delen inzichten over digitale transformatie, klantbeleving en de toekomst van online retail.",
     "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
     "ticketUrl": "https://www.emerce.nl/eday",
-    "category": "Conference",
+    "category": "Conferentie",
     "speakers": [
       {
         "name": "Thomas Bakker",
         "title": "Chief Digital Officer, Coolblue",
-        "bio": "Thomas oversees Coolblue's digital strategy across the Netherlands and Belgium, driving innovation in customer experience and logistics.",
+        "bio": "Thomas is verantwoordelijk voor de digitale strategie van Coolblue in Nederland en België en drijft innovatie op het gebied van klantbeleving en logistiek.",
         "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
       },
       {
         "name": "Emma Smit",
-        "title": "Director of E-commerce, Rituals",
-        "bio": "Emma leads e-commerce at Rituals, scaling their direct-to-consumer channel across 33 countries while maintaining brand consistency.",
+        "title": "Director E-commerce, Rituals",
+        "bio": "Emma leidt e-commerce bij Rituals en schaalt hun direct-to-consumer kanaal over 33 landen terwijl de merkidentiteit consistent blijft.",
         "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80"
       },
       {
         "name": "Pieter van Rijn",
         "title": "Partner, Deloitte Digital",
-        "bio": "Pieter advises top-100 Dutch retailers on digital transformation, with a focus on omnichannel strategies and tech stack optimization.",
+        "bio": "Pieter adviseert de top-100 Nederlandse retailers over digitale transformatie, met een focus op omnichannelstrategieën en techstack-optimalisatie.",
         "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80"
       }
     ],
     "schedule": [
       {
         "time": "08:30",
-        "title": "Registration & welcome coffee"
+        "title": "Registratie & welkomstskoffie"
       },
       {
         "time": "09:30",
-        "title": "Opening: Digital trends reshaping retail"
+        "title": "Opening: Digitale trends die retail veranderen"
       },
       {
         "time": "10:30",
-        "title": "Keynote: Building a customer-first e-commerce brand"
+        "title": "Keynote: Een klantgericht e-commercemerk bouwen"
       },
       {
         "time": "12:00",
@@ -116,92 +116,200 @@
       },
       {
         "time": "13:00",
-        "title": "Breakout sessions: SEO, Paid Media, Retention"
+        "title": "Breakoutsessies: SEO, Betaald verkeer, Klantbehoud"
       },
       {
         "time": "15:30",
-        "title": "Panel: The role of AI in the future of retail"
+        "title": "Panel: De rol van AI in de toekomst van retail"
       },
       {
         "time": "17:00",
-        "title": "Closing keynote & awards"
+        "title": "Afsluitende keynote & awards"
       },
       {
         "time": "18:00",
-        "title": "Networking reception"
+        "title": "Netwerkborrel"
       }
     ],
     "venue": {
       "name": "Ziggo Dome",
       "address": "De Passage 100, 1101 AX Amsterdam",
-      "transport": "Take metro line 53 to Strandvliet or bus 65. Parking available in the Ziggo Dome parking garage."
+      "transport": "Neem metro lijn 53 naar Strandvliet of bus 65. Parkeren in de Ziggo Dome parkeergarage."
     }
   },
   {
     "title": "Shopping Today",
-    "slug": "shopping-today-2025",
-    "date": "2025-06-05",
-    "endDate": "2025-06-06",
+    "slug": "shopping-today-2026",
+    "date": "2026-06-04",
+    "endDate": "2026-06-05",
     "location": "Expo Haarlemmermeer",
     "city": "Hoofddorp",
-    "description": "Shopping Today is the annual congress and exhibition for e-commerce and omnichannel retail in the Netherlands. Organized by Thuiswinkel.org, it brings together retailers, suppliers, and innovators to explore the future of shopping.",
+    "description": "Shopping Today is het jaarlijkse congres en de vakbeurs voor e-commerce en omnichannel retail in Nederland. Georganiseerd door Thuiswinkel.org brengt het evenement retailers, leveranciers en innovators samen om de toekomst van winkelen te verkennen.",
     "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&q=80",
     "ticketUrl": "https://www.shoppingtoday.nl",
-    "category": "Congress & Exhibition",
+    "category": "Congres & Vakbeurs",
     "speakers": [
       {
         "name": "Anna Visser",
-        "title": "Director, Thuiswinkel.org",
-        "bio": "Anna leads Thuiswinkel.org, the Dutch e-commerce industry association, advocating for fair and safe online shopping standards.",
+        "title": "Directeur, Thuiswinkel.org",
+        "bio": "Anna leidt Thuiswinkel.org, de Nederlandse branchevereniging voor e-commerce, en zet zich in voor eerlijk en veilig online winkelen.",
         "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&q=80"
       },
       {
         "name": "Joost de Groot",
         "title": "VP Commerce, PostNL",
-        "bio": "Joost drives e-commerce logistics innovation at PostNL, working closely with thousands of Dutch webshops on last-mile delivery solutions.",
+        "bio": "Joost stimuleert logistieke innovatie bij PostNL en werkt nauw samen met duizenden Nederlandse webshops aan oplossingen voor last-mile bezorging.",
         "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
       },
       {
         "name": "Chantal Wouters",
         "title": "Head of Retail Innovation, ING",
-        "bio": "Chantal focuses on fintech solutions for retail and e-commerce, including embedded finance, BNPL, and payment optimization.",
+        "bio": "Chantal richt zich op fintech-oplossingen voor retail en e-commerce, waaronder embedded finance, BNPL en betalingsoptimalisatie.",
         "image": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&q=80"
       }
     ],
     "schedule": [
       {
         "time": "09:00",
-        "title": "Exhibition opens & networking breakfast"
+        "title": "Vakbeurs open & netwerkonbijt"
       },
       {
         "time": "10:00",
-        "title": "Opening congress: State of Dutch e-commerce 2025"
+        "title": "Openingscongres: Stand van Nederlandse e-commerce 2026"
       },
       {
         "time": "11:00",
-        "title": "Keynote: Omnichannel — connecting online and offline"
+        "title": "Keynote: Omnichannel — online en offline verbinden"
       },
       {
         "time": "12:30",
-        "title": "Lunch & exhibition"
+        "title": "Lunch & vakbeurs"
       },
       {
         "time": "13:30",
-        "title": "Workshops: Logistics, Payments, Customer loyalty"
+        "title": "Workshops: Logistiek, Betalingen, Klantloyaliteit"
       },
       {
         "time": "15:00",
-        "title": "Panel: Sustainability in e-commerce supply chains"
+        "title": "Panel: Duurzaamheid in e-commerce toeleveringsketens"
       },
       {
         "time": "16:30",
-        "title": "Day 1 closing & drinks"
+        "title": "Afsluiting dag 1 & borrel"
       }
     ],
     "venue": {
       "name": "Expo Haarlemmermeer",
       "address": "Vijfhuizerweg 2, 2141 BM Vijfhuizen",
-      "transport": "Bus 300 from Amsterdam Centraal or Schiphol. Free parking on-site."
+      "transport": "Bus 300 vanaf Amsterdam Centraal of Schiphol. Gratis parkeren op het terrein."
+    }
+  },
+  {
+    "title": "Evolve Digital Hackathon",
+    "slug": "evolve-digital-hackathon-2026",
+    "date": "2026-03-22",
+    "endDate": "2026-03-22",
+    "location": "De Gruyterfabriek, Den Bosch",
+    "city": "Den Bosch",
+    "description": "Evolve Digital Hackathon is een avondvullend evenement voor developers, designers en digital marketeers die de toekomst van e-commerce willen vormgeven. In teams van 3 tot 5 personen werk je in een paar uur aan een innovatief digitaal concept. Denk aan AI-gedreven shopping ervaringen, slimme logistieke oplossingen of next-gen checkout flows. Eten en drinken zijn inbegrepen, toegang is gratis.",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
+    "ticketUrl": "#",
+    "category": "Hackathon",
+    "speakers": [
+      {
+        "name": "Dennis Visschedijk",
+        "title": "Oprichter & Developer, Evolve Digital",
+        "bio": "Dennis is de initiatiefnemer van de Evolve Digital Hackathon. Als full-stack developer en ondernemer combineert hij technische expertise met een scherp oog voor digitale innovatie in e-commerce.",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80"
+      },
+      {
+        "name": "Joris Knaapen",
+        "title": "Lead Developer, Digital Products",
+        "bio": "Joris is gespecialiseerd in het bouwen van schaalbare webapplicaties en heeft ruime ervaring met het begeleiden van hackathon-teams naar werkende prototypes.",
+        "image": "https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&q=80"
+      },
+      {
+        "name": "Tomas Hesseling",
+        "title": "UX Designer & Innovatiestrateg",
+        "bio": "Tomas verbindt design thinking met technologie. Hij helpt teams om snel van idee naar prototype te gaan en heeft meerdere hackathons gewonnen met zijn aanpak.",
+        "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80"
+      }
+    ],
+    "schedule": [
+      {
+        "time": "16:00",
+        "title": "Inloop & welkom — eten en drinken staan klaar"
+      },
+      {
+        "time": "16:30",
+        "title": "Openingssessie: uitleg format & teamindeling"
+      },
+      {
+        "time": "17:00",
+        "title": "Kickoff: thema-onthulling & brainstorm"
+      },
+      {
+        "time": "17:30",
+        "title": "Hackathon start — bouwen maar!"
+      },
+      {
+        "time": "20:00",
+        "title": "Tussentijdse check-in & feedback ronde"
+      },
+      {
+        "time": "22:00",
+        "title": "Presentaties — elk team pitcht hun oplossing"
+      },
+      {
+        "time": "22:30",
+        "title": "Beoordeling & prijsuitreiking"
+      },
+      {
+        "time": "23:00",
+        "title": "Afsluiting & nadrink"
+      }
+    ],
+    "venue": {
+      "name": "De Gruyterfabriek",
+      "address": "St. Josephstraat 20, 5211 NL 's-Hertogenbosch",
+      "transport": "Gratis parkeren voor de deur. Met het OV: bus 66 of 70 vanaf station Den Bosch, halte Gruyterpark."
+    }
+  },
+  {
+    "title": "Pre-Webwinkel Vakdagen Borrel",
+    "slug": "pre-webwinkel-vakdagen-borrel-2026",
+    "date": "2026-03-24",
+    "endDate": "2026-03-24",
+    "location": "Café de Beurs, Utrecht",
+    "city": "Utrecht",
+    "description": "Een informeel samenzijn met vakcollega's, vlak voordat de Webwinkel Vakdagen van start gaan. Kom bij, spreek andere e-commerce professionals en ga met een goed gevoel de vakdagen in. Bedrijven als Shopware, Ergonode, Luigi's Box en Evolve Digital zijn aanwezig. Toegang is gratis.",
+    "image": "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1200&q=80",
+    "ticketUrl": "#",
+    "category": "Netwerkborrel",
+    "speakers": [],
+    "companies": ["Shopware", "Ergonode", "Luigi's Box", "Evolve Digital"],
+    "schedule": [
+      {
+        "time": "16:30",
+        "title": "Inloop & welkom"
+      },
+      {
+        "time": "17:00",
+        "title": "Informeel netwerken met vakcollega's"
+      },
+      {
+        "time": "18:00",
+        "title": "Hapjes & drankjes"
+      },
+      {
+        "time": "20:30",
+        "title": "Afsluiting"
+      }
+    ],
+    "venue": {
+      "name": "Café de Beurs",
+      "address": "Neude 32, 3512 AD Utrecht",
+      "transport": "5 minuten lopen vanaf station Utrecht Centraal."
     }
   }
 ]

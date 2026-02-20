@@ -2,6 +2,8 @@ import { getAllEvents, getEventBySlug } from "@/lib/events";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import FavoriteButton from "@/app/components/FavoriteButton";
+import ShareButton from "@/app/components/ShareButton";
 
 export async function generateStaticParams() {
   const events = getAllEvents();
@@ -110,31 +112,52 @@ export default async function EventPage({
             </section>
 
             {/* Speakers */}
-            <section>
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Sprekers</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {event.speakers.map((speaker, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-4 bg-white rounded-xl border border-gray-100 p-4 shadow-sm"
-                  >
-                    <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 bg-gray-100">
-                      <Image
-                        src={speaker.image}
-                        alt={speaker.name}
-                        fill
-                        className="object-cover"
-                      />
+            {event.companies && event.companies.length > 0 ? (
+              <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Aanwezige bedrijven</h2>
+                <div className="flex flex-wrap gap-3">
+                  {event.companies.map((company, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                        <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                      </div>
+                      <span className="font-semibold text-gray-900">{company}</span>
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{speaker.name}</p>
-                      <p className="text-sm text-blue-600 mb-1">{speaker.title}</p>
-                      <p className="text-xs text-gray-500 leading-relaxed">{speaker.bio}</p>
+                  ))}
+                </div>
+              </section>
+            ) : event.speakers.length > 0 ? (
+              <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Sprekers</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {event.speakers.map((speaker, index) => (
+                    <div
+                      key={index}
+                      className="flex gap-4 bg-white rounded-xl border border-gray-100 p-4 shadow-sm"
+                    >
+                      <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 bg-gray-100">
+                        <Image
+                          src={speaker.image}
+                          alt={speaker.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">{speaker.name}</p>
+                        <p className="text-sm text-blue-600 mb-1">{speaker.title}</p>
+                        <p className="text-xs text-gray-500 leading-relaxed">{speaker.bio}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+                  ))}
+                </div>
+              </section>
+            ) : null}
           </div>
 
           {/* Sidebar */}
@@ -192,6 +215,8 @@ export default async function EventPage({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
+              <FavoriteButton slug={event.slug} />
+              <ShareButton title={event.title} slug={event.slug} />
             </div>
           </div>
         </div>

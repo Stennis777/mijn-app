@@ -30,6 +30,7 @@ export interface Event {
   ticketUrl: string;
   category: string;
   speakers: Speaker[];
+  companies?: string[];
   schedule: ScheduleItem[];
   venue: Venue;
 }

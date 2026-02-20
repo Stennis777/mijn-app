@@ -1,5 +1,8 @@
 import { getAllEvents } from "@/lib/events";
 import EventAgenda from "@/app/components/EventAgenda";
+import Link from "next/link";
+import Image from "next/image";
+import BananaEasterEgg from "@/app/components/BananaEasterEgg";
 
 export default function Home() {
   const events = getAllEvents();
@@ -8,12 +11,37 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-2xl font-bold text-blue-600">E-commerce</span>
             <span className="text-2xl font-bold text-gray-900">Events NL</span>
           </div>
-          <span className="text-sm text-gray-400">{events.length} evenementen</span>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://evolvedigital.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-2 text-xs text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <span>Powered by</span>
+              <Image
+                src="https://cdn.prod.website-files.com/684487646291b265c36714a2/68448d1b4b1c8edbe1382b9d_Evolve-logo-text-only-wide-color.svg"
+                alt="Evolve Digital"
+                width={90}
+                height={20}
+                className="h-5 w-auto"
+              />
+            </a>
+            <Link
+              href="/aanmelden"
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Evenement aanmelden
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -57,8 +85,26 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-100 bg-white mt-16">
-        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-gray-400">
-          © {new Date().getFullYear()} E-commerce Events NL
+        <div className="max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+          <span className="flex items-center gap-2">
+            © {new Date().getFullYear()} E-commerce Events NL
+            <BananaEasterEgg />
+          </span>
+          <a
+            href="https://evolvedigital.nl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-gray-600 transition-colors"
+          >
+            <span>Powered by</span>
+            <Image
+              src="https://cdn.prod.website-files.com/684487646291b265c36714a2/68448d1b4b1c8edbe1382b9d_Evolve-logo-text-only-wide-color.svg"
+              alt="Evolve Digital"
+              width={90}
+              height={20}
+              className="h-5 w-auto opacity-60 hover:opacity-100 transition-opacity"
+            />
+          </a>
         </div>
       </footer>
     </div>
