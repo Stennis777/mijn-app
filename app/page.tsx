@@ -55,20 +55,6 @@ export default function Home() {
               Ontdek alle e-commerce evenementen, conferenties en beurzen in Nederland.
               Blijf op de hoogte van de laatste trends en netwerk met vakgenoten.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <span className="bg-blue-500/40 text-white text-sm font-medium px-3 py-1 rounded-full">
-                Conferenties
-              </span>
-              <span className="bg-blue-500/40 text-white text-sm font-medium px-3 py-1 rounded-full">
-                Beurzen
-              </span>
-              <span className="bg-blue-500/40 text-white text-sm font-medium px-3 py-1 rounded-full">
-                Workshops
-              </span>
-              <span className="bg-blue-500/40 text-white text-sm font-medium px-3 py-1 rounded-full">
-                Networking
-              </span>
-            </div>
           </div>
         </div>
       </section>

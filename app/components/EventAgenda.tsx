@@ -26,7 +26,10 @@ export default function EventAgenda({ events }: { events: Event[] }) {
   const [query, setQuery] = useState("");
   const [showWishlist, setShowWishlist] = useState(false);
   const [view, setView] = useState<"list" | "calendar">("list");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { toggle, isFavorite, favorites } = useFavorites();
+
+  const categories = Array.from(new Set(events.map((e) => e.category))).sort();
 
   const searched = query.trim()
     ? events.filter(
@@ -39,9 +42,13 @@ export default function EventAgenda({ events }: { events: Event[] }) {
       )
     : events;
 
-  const filtered = showWishlist
-    ? searched.filter((e) => isFavorite(e.slug))
+  const categorized = selectedCategory
+    ? searched.filter((e) => e.category === selectedCategory)
     : searched;
+
+  const filtered = showWishlist
+    ? categorized.filter((e) => isFavorite(e.slug))
+    : categorized;
 
   return (
     <div>
@@ -71,6 +78,33 @@ export default function EventAgenda({ events }: { events: Event[] }) {
             </button>
           )}
         </div>
+      </div>
+
+      {/* Category filters */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        <button
+          onClick={() => setSelectedCategory(null)}
+          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+            selectedCategory === null
+              ? "bg-gray-900 text-white"
+              : "bg-white border border-gray-200 text-gray-600 hover:border-gray-400"
+          }`}
+        >
+          Alle types
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              selectedCategory === cat
+                ? "bg-blue-600 text-white"
+                : "bg-white border border-gray-200 text-gray-600 hover:border-blue-300 hover:text-blue-600"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
 
       {/* View toggle + Tabs */}
@@ -161,7 +195,11 @@ export default function EventAgenda({ events }: { events: Event[] }) {
             {showWishlist ? "Nog geen events op je wishlist" : "Geen evenementen gevonden"}
           </p>
           <p className="text-sm mt-1">
-            {showWishlist ? "Geef een event een hartje om het hier te bewaren" : "Probeer een andere zoekterm"}
+            {showWishlist
+              ? "Geef een event een hartje om het hier te bewaren"
+              : selectedCategory
+              ? `Geen evenementen gevonden in de categorie "${selectedCategory}"`
+              : "Probeer een andere zoekterm"}
           </p>
         </div>
       ) : (
