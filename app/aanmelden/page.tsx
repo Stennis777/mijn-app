@@ -19,6 +19,13 @@ interface ScheduleItem {
   title: string;
 }
 
+interface Company {
+  name: string;
+  website: string;
+  linkedin: string;
+  logoPreview: string | null;
+}
+
 export default function AanmeldenPage() {
   const [form, setForm] = useState({
     title: "",
@@ -38,7 +45,8 @@ export default function AanmeldenPage() {
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
   const [speakerFiles, setSpeakerFiles] = useState<(File | null)[]>([]);
   const [schedule, setSchedule] = useState<ScheduleItem[]>([]);
-  const [companies, setCompanies] = useState<string[]>([]);
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [companyFiles, setCompanyFiles] = useState<(File | null)[]>([]);
 
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -117,13 +125,28 @@ export default function AanmeldenPage() {
 
   // Companies
   function addCompany() {
-    setCompanies((prev) => [...prev, ""]);
+    setCompanies((prev) => [...prev, { name: "", website: "", linkedin: "", logoPreview: null }]);
+    setCompanyFiles((prev) => [...prev, null]);
   }
   function removeCompany(i: number) {
     setCompanies((prev) => prev.filter((_, idx) => idx !== i));
+    setCompanyFiles((prev) => prev.filter((_, idx) => idx !== i));
   }
-  function updateCompany(i: number, value: string) {
-    setCompanies((prev) => prev.map((c, idx) => idx === i ? value : c));
+  function updateCompany(i: number, field: keyof Omit<Company, "logoPreview">, value: string) {
+    setCompanies((prev) => prev.map((c, idx) => idx === i ? { ...c, [field]: value } : c));
+  }
+  function handleCompanyLogo(i: number, e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const allowedTypes = ["image/jpeg", "image/webp", "image/png"];
+    if (!allowedTypes.includes(file.type) || file.size > 2 * 1024 * 1024) return;
+    const preview = URL.createObjectURL(file);
+    setCompanyFiles((prev) => prev.map((f, idx) => idx === i ? file : f));
+    setCompanies((prev) => prev.map((c, idx) => idx === i ? { ...c, logoPreview: preview } : c));
+  }
+  function removeCompanyLogo(i: number) {
+    setCompanyFiles((prev) => prev.map((f, idx) => idx === i ? null : f));
+    setCompanies((prev) => prev.map((c, idx) => idx === i ? { ...c, logoPreview: null } : c));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -180,7 +203,26 @@ export default function AanmeldenPage() {
         image_url: image_url || null,
         speakers: speakersWithPhotos,
         schedule: schedule.filter((s) => s.time.trim() && s.title.trim()),
-        companies: companies.filter((c) => c.trim()),
+        companies: await Promise.all(
+          companies
+            .filter((c) => c.name.trim())
+            .map(async (company, i) => {
+              const file = companyFiles[i];
+              let logoUrl = "";
+              if (file) {
+                const ext = file.name.split(".").pop();
+                const path = `logos/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                  .from("event-images")
+                  .upload(path, file, { contentType: file.type, upsert: false });
+                if (!uploadError && uploadData) {
+                  const { data: urlData } = supabase.storage.from("event-images").getPublicUrl(uploadData.path);
+                  logoUrl = urlData.publicUrl;
+                }
+              }
+              return { name: company.name, website: company.website, linkedin: company.linkedin, logo: logoUrl };
+            })
+        ),
       }),
     });
 
@@ -555,15 +597,67 @@ export default function AanmeldenPage() {
             )}
 
             {companies.map((company, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <input type="text" value={company} onChange={(e) => updateCompany(i, e.target.value)}
-                  placeholder="Bedrijfsnaam" className={inputClass} />
-                <button type="button" onClick={() => removeCompany(i)}
-                  className="text-red-500 hover:text-red-700 shrink-0">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700">Bedrijf {i + 1}</span>
+                  <button type="button" onClick={() => removeCompany(i)}
+                    className="text-sm text-red-500 hover:text-red-700">Verwijderen</button>
+                </div>
+
+                {/* Logo + naam */}
+                <div className="flex items-start gap-4">
+                  {/* Logo upload */}
+                  <div className="shrink-0">
+                    <label className="block text-xs font-medium text-gray-500 mb-1.5">Logo</label>
+                    <label className="cursor-pointer group relative flex items-center justify-center w-16 h-16 rounded-xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-200 hover:border-blue-400 transition-colors">
+                      {company.logoPreview ? (
+                        <>
+                          <img src={company.logoPreview} alt="" className="w-full h-full object-contain p-1" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                          </div>
+                        </>
+                      ) : (
+                        <svg className="w-7 h-7 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                      )}
+                      <input type="file" accept="image/jpeg,image/webp,image/png" className="hidden"
+                        onChange={(e) => handleCompanyLogo(i, e)} />
+                    </label>
+                    {company.logoPreview && (
+                      <button type="button" onClick={() => removeCompanyLogo(i)}
+                        className="mt-1 text-xs text-red-500 hover:text-red-700 w-16 text-center block">
+                        Verwijderen
+                      </button>
+                    )}
+                    <p className="text-xs text-gray-400 mt-1 w-16 leading-tight">PNG/WebP max 2MB</p>
+                  </div>
+
+                  {/* Naam */}
+                  <div className="flex-1">
+                    <label className="block text-xs font-medium text-gray-500 mb-1">Bedrijfsnaam</label>
+                    <input type="text" value={company.name} onChange={(e) => updateCompany(i, "name", e.target.value)}
+                      placeholder="bijv. Bol.com" className={inputClass} />
+                  </div>
+                </div>
+
+                {/* Website + LinkedIn */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-500 mb-1">Website <span className="text-gray-400 font-normal">(optioneel)</span></label>
+                    <input type="url" value={company.website} onChange={(e) => updateCompany(i, "website", e.target.value)}
+                      placeholder="https://..." className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-gray-500 mb-1">LinkedIn <span className="text-gray-400 font-normal">(optioneel)</span></label>
+                    <input type="url" value={company.linkedin} onChange={(e) => updateCompany(i, "linkedin", e.target.value)}
+                      placeholder="https://linkedin.com/company/..." className={inputClass} />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
