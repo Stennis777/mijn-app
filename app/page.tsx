@@ -2,7 +2,6 @@ import { getAllEvents } from "@/lib/events";
 import EventAgenda from "@/app/components/EventAgenda";
 import Link from "next/link";
 import Image from "next/image";
-import BananaEasterEgg from "@/app/components/BananaEasterEgg";
 
 export default function Home() {
   const events = getAllEvents();
@@ -88,7 +87,6 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <span className="flex items-center gap-2">
             © {new Date().getFullYear()} E-commerce Events NL
-            <BananaEasterEgg />
           </span>
           <a
             href="https://evolvedigital.nl"
