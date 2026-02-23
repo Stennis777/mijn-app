@@ -9,6 +9,9 @@ const CATEGORIES = ["Conferentie", "Congres & Vakbeurs", "Hackathon", "Workshop"
 interface Speaker {
   name: string;
   title: string;
+  bio: string;
+  linkedin: string;
+  photoPreview: string | null;
 }
 
 interface ScheduleItem {
@@ -33,6 +36,7 @@ export default function AanmeldenPage() {
   });
 
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
+  const [speakerFiles, setSpeakerFiles] = useState<(File | null)[]>([]);
   const [schedule, setSchedule] = useState<ScheduleItem[]>([]);
   const [companies, setCompanies] = useState<string[]>([]);
 
@@ -76,13 +80,28 @@ export default function AanmeldenPage() {
 
   // Speakers
   function addSpeaker() {
-    setSpeakers((prev) => [...prev, { name: "", title: "" }]);
+    setSpeakers((prev) => [...prev, { name: "", title: "", bio: "", linkedin: "", photoPreview: null }]);
+    setSpeakerFiles((prev) => [...prev, null]);
   }
   function removeSpeaker(i: number) {
     setSpeakers((prev) => prev.filter((_, idx) => idx !== i));
+    setSpeakerFiles((prev) => prev.filter((_, idx) => idx !== i));
   }
-  function updateSpeaker(i: number, field: keyof Speaker, value: string) {
+  function updateSpeaker(i: number, field: keyof Omit<Speaker, "photoPreview">, value: string) {
     setSpeakers((prev) => prev.map((s, idx) => idx === i ? { ...s, [field]: value } : s));
+  }
+  function handleSpeakerPhoto(i: number, e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const allowedTypes = ["image/jpeg", "image/webp", "image/png"];
+    if (!allowedTypes.includes(file.type) || file.size > 2 * 1024 * 1024) return;
+    const preview = URL.createObjectURL(file);
+    setSpeakerFiles((prev) => prev.map((f, idx) => idx === i ? file : f));
+    setSpeakers((prev) => prev.map((s, idx) => idx === i ? { ...s, photoPreview: preview } : s));
+  }
+  function removeSpeakerPhoto(i: number) {
+    setSpeakerFiles((prev) => prev.map((f, idx) => idx === i ? null : f));
+    setSpeakers((prev) => prev.map((s, idx) => idx === i ? { ...s, photoPreview: null } : s));
   }
 
   // Schedule
@@ -131,13 +150,35 @@ export default function AanmeldenPage() {
       image_url = urlData.publicUrl;
     }
 
+    // Upload speaker photos
+    const speakersWithPhotos = await Promise.all(
+      speakers
+        .filter((s) => s.name.trim())
+        .map(async (speaker, i) => {
+          const file = speakerFiles[i];
+          let photoUrl = "";
+          if (file) {
+            const ext = file.name.split(".").pop();
+            const path = `speakers/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+            const { data: uploadData, error: uploadError } = await supabase.storage
+              .from("event-images")
+              .upload(path, file, { contentType: file.type, upsert: false });
+            if (!uploadError && uploadData) {
+              const { data: urlData } = supabase.storage.from("event-images").getPublicUrl(uploadData.path);
+              photoUrl = urlData.publicUrl;
+            }
+          }
+          return { name: speaker.name, title: speaker.title, bio: speaker.bio, linkedin: speaker.linkedin, image: photoUrl };
+        })
+    );
+
     const res = await fetch("/api/events/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...form,
         image_url: image_url || null,
-        speakers: speakers.filter((s) => s.name.trim()),
+        speakers: speakersWithPhotos,
         schedule: schedule.filter((s) => s.time.trim() && s.title.trim()),
         companies: companies.filter((c) => c.trim()),
       }),
@@ -371,23 +412,80 @@ export default function AanmeldenPage() {
             )}
 
             {speakers.map((speaker, i) => (
-              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
+              <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-700">Spreker {i + 1}</span>
                   <button type="button" onClick={() => removeSpeaker(i)}
                     className="text-sm text-red-500 hover:text-red-700">Verwijderen</button>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Naam</label>
-                    <input type="text" value={speaker.name} onChange={(e) => updateSpeaker(i, "name", e.target.value)}
-                      placeholder="Voornaam Achternaam" className={inputClass} />
+
+                {/* Foto + naam/titel */}
+                <div className="flex items-start gap-4">
+                  {/* Foto upload */}
+                  <div className="shrink-0">
+                    <label className="block text-xs font-medium text-gray-500 mb-1.5">Foto</label>
+                    <label className="cursor-pointer group relative block w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-dashed border-gray-200 hover:border-blue-400 transition-colors">
+                      {speaker.photoPreview ? (
+                        <>
+                          <img src={speaker.photoPreview} alt="" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <svg className="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                          </svg>
+                        </div>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/webp,image/png"
+                        className="hidden"
+                        onChange={(e) => handleSpeakerPhoto(i, e)}
+                      />
+                    </label>
+                    {speaker.photoPreview && (
+                      <button type="button" onClick={() => removeSpeakerPhoto(i)}
+                        className="mt-1 text-xs text-red-500 hover:text-red-700 w-16 text-center block">
+                        Verwijderen
+                      </button>
+                    )}
+                    <p className="text-xs text-gray-400 mt-1 w-16 leading-tight">JPG/WebP max 2MB</p>
                   </div>
-                  <div>
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Functie / titel</label>
-                    <input type="text" value={speaker.title} onChange={(e) => updateSpeaker(i, "title", e.target.value)}
-                      placeholder="bijv. CEO bij Bedrijf" className={inputClass} />
+
+                  {/* Naam + titel */}
+                  <div className="flex-1 space-y-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Naam</label>
+                      <input type="text" value={speaker.name} onChange={(e) => updateSpeaker(i, "name", e.target.value)}
+                        placeholder="Voornaam Achternaam" className={inputClass} />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Functie / titel</label>
+                      <input type="text" value={speaker.title} onChange={(e) => updateSpeaker(i, "title", e.target.value)}
+                        placeholder="bijv. CEO bij Bedrijf" className={inputClass} />
+                    </div>
                   </div>
+                </div>
+
+                {/* Bio */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Korte bio <span className="text-gray-400 font-normal">(optioneel)</span></label>
+                  <textarea value={speaker.bio} onChange={(e) => updateSpeaker(i, "bio", e.target.value)}
+                    placeholder="Korte beschrijving van de spreker..."
+                    rows={2} className={inputClass + " resize-none"} />
+                </div>
+
+                {/* LinkedIn */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">LinkedIn URL <span className="text-gray-400 font-normal">(optioneel)</span></label>
+                  <input type="url" value={speaker.linkedin} onChange={(e) => updateSpeaker(i, "linkedin", e.target.value)}
+                    placeholder="https://linkedin.com/in/naam" className={inputClass} />
                 </div>
               </div>
             ))}
